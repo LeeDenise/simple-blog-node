@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+    <title>Blog</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Blog Posts</h1>
+        <form action="/logout?_method=DELETE" method="POST">
+            <a href="/posts/new" class="btn btn-outline-success btn-sm">New</a>
+            <button type="submit" class="btn btn-outline-primary btn-sm">Log Out</button>
+        </form>
+        <% posts.forEach(post => { %>
+           <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title"><%= post.title %></h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%= post.publishedDate.toLocaleDateString()%>
+                    </div>
+                    <div class="card-text mb-2"><%= post.description %></div>
+                    <a href="posts/<%= post.slug%>" class="btn btn-outline-primary">Read</a> 
+                    <a href="posts/edit/<%= post.id%>" class="btn btn-outline-info">Edit</a>
+                    <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </div>
+           </div>         
+        <% }) %>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
+    <title>Blog</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Login</h1>
+
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username" aria-setsize="5">Username: </label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password" aria-setsize="5">Password: </label>
+                <input type="password" id="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-outline-primary btn-sm">Login</button>        
+            <a href="/login" class="btn btn-outline-danger btn-sm">Cancel</a>
+            <a href="/register" class="btn btn-secondary btn-sm">Register</a> 
+        </form>
+        <br>
+        <% if (messages.error) { %>
+            <h4 style="color: blueviolet;">
+                <%= messages.error %>
+            </h4>
+            <% } %>
+    </div>
+
+</body>
+</html>
+
